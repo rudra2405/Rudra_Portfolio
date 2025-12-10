@@ -26,7 +26,7 @@ JavaScript, and Tailwind CSS with features like
 product listing, search, add-to-cart, checkout, and 
 order success flow. Implemented dynamic state 
 management using React hooks for smooth user 
-interaction`,
+interaction.`,
       img: "/image2.png", // replace
       link: "https://github.com/rudra2405/Cart_Manage_System",
     },
@@ -36,7 +36,7 @@ interaction`,
 and Tailwind CSS that fetches real-time weather 
 data from an external API. Focused on creating a 
 clean, responsive UI and efficiently handling 
-dynamic data updates for a smooth user experience`,
+dynamic data updates for a smooth user experience.`,
       img: "/Image3.png", // replace
       link: "https://github.com/rudra2405/Weather-App",
     },
@@ -46,6 +46,8 @@ dynamic data updates for a smooth user experience`,
 
 export default function App() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -78,9 +80,12 @@ export default function App() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border-b border-gray-700 shadow-lg">
         <div className="max-w-6xl mx-auto flex justify-between items-center p-5">
-          <a href="/" className="text-xl md:text-2xl font-bold text-blue-400">
-            {DATA.name}
-          </a>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="text-xl md:text-2xl font-bold text-blue-400"
+          >
+            Rudra Hirdekar
+          </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 text-gray-200 font-medium">
@@ -95,36 +100,31 @@ export default function App() {
             ))}
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger / Close */}
           <button
-            className="md:hidden text-3xl text-gray-300 hover:text-blue-400 transition"
-            onClick={() =>
-              document.getElementById("mobileMenu").classList.toggle("hidden")
-            }
+            className="md:hidden text-2xl text-gray-300 hover:text-blue-400 transition"
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            ☰
+            {menuOpen ? "✖" : "☰"}
           </button>
         </div>
 
-        {/* Mobile Slide Menu */}
-        <div
-          id="mobileMenu"
-          className="hidden md:hidden flex flex-col space-y-6 px-6 pb-6 text-lg text-gray-200 font-medium bg-gray-900/60 backdrop-blur-sm"
-        >
-          {["About", "Projects", "Resume", "Contact"].map((item, i) => (
-            <a
-              key={i}
-              href={`#${item.toLowerCase()}`}
-              className="hover:text-blue-400 transition"
-              onClick={() =>
-                document.getElementById("mobileMenu").classList.add("hidden")
-              }
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      </nav>
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden flex flex-col space-y-6 px-6 pb-6 text-lg text-gray-200 font-medium bg-gray-900/60 backdrop-blur-sm">
+            {["About", "Projects", "Resume", "Contact"].map((item, i) => (
+              <a
+                key={i}
+                href={`#${item.toLowerCase()}`}
+                className="hover:text-blue-400 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        )}
+      </nav>{" "}
       {/* Hero */}
       <section className="text-center py-25 px-4">
         <motion.h2
@@ -136,7 +136,7 @@ export default function App() {
         </motion.h2>
       </section>
       {/* About */}
-      <section id="about" className="max-w-5xl mx-auto px-6 py-16">
+      <section id="about" className="max-w-5xl mx-auto text-center px-6 py-16">
         <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
           About Me
         </h3>
@@ -167,7 +167,7 @@ export default function App() {
         </div>
       </section>{" "}
       {/* Skills Section */}
-      <section id="skills" className="max-w-5xl mx-auto px-6 py-16">
+      <section id="skills" className="max-w-5xl mx-auto text-center px-6 py-16">
         <h3 className="text-2xl font-semibold mb-8 border-b border-gray-700 inline-block">
           Skills 🚀
         </h3>
@@ -198,7 +198,10 @@ export default function App() {
         </div>
       </section>
       {/* Projects */}
-      <section id="projects" className="max-w-5xl mx-auto px-6 py-16">
+      <section
+        id="projects"
+        className="max-w-5xl text-center mx-auto px-6 py-16"
+      >
         <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 inline-block">
           Projects
         </h3>
@@ -220,6 +223,30 @@ export default function App() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+      {/* ------- EDUCATION SECTION ------- */}
+      <section id="education" className="py-20 px-5 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Education 🎓</h2>
+
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+            <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
+              Bachelor of Engineering (Computer Science)
+            </h3>
+            <p className="text-gray-600 mt-2 font-semibold">
+              Darshan University
+            </p>
+            <p className="mt-2 font-medium">2019 - 2023</p>
+          </div>
+
+          <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+            <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
+              Higher Secondary (HSC)
+            </h3>
+            <p className="text-gray-600 mt-2 font-semibold">Shantvan School</p>
+            <p className="mt-2 font-medium">2017 - 2019</p>
+          </div>
         </div>
       </section>
       {/* Resume */}
