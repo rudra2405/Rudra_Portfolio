@@ -8,7 +8,7 @@ import { TypeAnimation } from "react-type-animation";
 const DATA = {
   name: "Rudra Hirdekar",
   role: "Frontend Developer (React.js)",
-  about: `dedicated Front-End Developer skilled in building 
+  about: `Dedicated Front-End Developer skilled in building 
 responsive, user-friendly web applications using 
 React, JavaScript, and modern UI frameworks. I 
 focus on writing clean, efficient code and creating 
@@ -21,12 +21,13 @@ improving my development skills`,
   projects: [
     {
       title: "Cart Management System",
-      desc: `Built a responsive shopping platform using React.js, 
-JavaScript, and Tailwind CSS with features like 
-product listing, search, add-to-cart, checkout, and 
-order success flow. Implemented dynamic state 
-management using React hooks for smooth user 
-interaction.`,
+      desc: `Developed a responsive e-commerce cart 
+application using React.js, JavaScript, and Tailwind 
+CSS. Implemented features such as product listing, 
+search filter, add-to-cart, checkout, and order 
+confirmation flow. Managed state using React 
+Hooks to enhance user interaction and ensure 
+smooth functionality.`,
       img: "/image2.png", // replace
       link: "https://github.com/rudra2405/Cart_Manage_System",
     },
