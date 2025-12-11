@@ -41,7 +41,7 @@ dynamic data updates for a smooth user experience.`,
       link: "https://github.com/rudra2405/Weather-App",
     },
   ],
-  resume: "/Rudra_hirdekar_resume.pdf",
+  // resume: "/Rudra_Hirdekar_Resume.pdf",
 };
 
 export default function App() {
@@ -183,6 +183,8 @@ export default function App() {
             "Bootstrap",
             "Axios",
             "Firebase",
+            "SCSS",
+            "AJAX",
             "Responsive Design",
           ].map((skill, i) => (
             <motion.div
@@ -254,7 +256,7 @@ export default function App() {
         <h3 className="text-2xl font-semibold mb-4">Resume</h3>
 
         <a
-          href="/Rudra_hirdekar_resume.pdf"
+          href="/Rudra_Hirdekar_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
