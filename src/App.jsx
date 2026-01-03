@@ -131,13 +131,15 @@ export default function App() {
         {/* Cover Image */}
         <div
           className="h-55
-    sm:h-56
+    sm:h-70
     md:h-72
     lg:h-80
     bg-contain
     bg-center
     bg-no-repeat
-    md:bg-cover
+    md:bg-contain
+    lg:bg-cover
+    sm:bg-contain
 "
           style={{
             backgroundImage: "url('/cover.jpg')",
@@ -148,11 +150,11 @@ export default function App() {
         {/* <div className="absolute inset-0 bg-black/40" /> */}
 
         {/* Profile Image */}
-        <div className="absolute -bottom-5 md:-bottom-20 left-1/2 -translate-x-1/2">
+        <div className="absolute -bottom-1 sm:-bottom-15 left-1/2 -translate-x-1/2">
           <img
             src={DATA.profileImg}
             alt="profile"
-            className="w-28 h-28
+            className="w-23 h-23
     sm:w-32 sm:h-32
     md:w-40 md:h-40
     rounded-full
@@ -164,7 +166,7 @@ export default function App() {
         </div>
       </section>
       {/* About */}
-      <div className="mt-24" />
+      <div className="mt-1 sm:mt-15" />
       <section id="about" className="max-w-5xl mx-auto text-center px-6 py-16">
         <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
           About Me
