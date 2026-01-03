@@ -79,7 +79,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-sans">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border-b border-gray-700 shadow-lg">
+      <nav className="fixed top-0 left-0 w-full z-100 backdrop-blur-md bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border-b border-gray-700 shadow-lg">
         <div className="max-w-6xl mx-auto flex justify-between items-center p-5">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -130,7 +130,15 @@ export default function App() {
       <section className="relative w-full">
         {/* Cover Image */}
         <div
-          className="h-64 md:h-80 w-full bg-cover bg-center"
+          className="h-40
+    sm:h-56
+    md:h-72
+    lg:h-80
+    bg-contain
+    bg-center
+    bg-no-repeat
+    md:bg-cover
+"
           style={{
             backgroundImage: "url('/cover.jpg')",
           }}
@@ -140,11 +148,18 @@ export default function App() {
         {/* <div className="absolute inset-0 bg-black/40" /> */}
 
         {/* Profile Image */}
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2">
+        <div className="absolute -bottom-15 md:-bottom-20 left-1/2 -translate-x-1/2">
           <img
             src={DATA.profileImg}
             alt="profile"
-            className="w-40 h-40 rounded-full border-4 border-gray-950 shadow-2xl object-cover"
+            className="w-28 h-28
+    sm:w-32 sm:h-32
+    md:w-40 md:h-40
+    rounded-full
+    border-2 border-gray-950
+    shadow-2xl
+    object-cover
+ "
           />
         </div>
       </section>
