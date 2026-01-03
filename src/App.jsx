@@ -130,7 +130,7 @@ export default function App() {
       <section className="relative w-full">
         {/* Cover Image */}
         <div
-          className="h-40
+          className="h-55
     sm:h-56
     md:h-72
     lg:h-80
@@ -148,7 +148,7 @@ export default function App() {
         {/* <div className="absolute inset-0 bg-black/40" /> */}
 
         {/* Profile Image */}
-        <div className="absolute -bottom-15 md:-bottom-20 left-1/2 -translate-x-1/2">
+        <div className="absolute -bottom-5 md:-bottom-20 left-1/2 -translate-x-1/2">
           <img
             src={DATA.profileImg}
             alt="profile"
