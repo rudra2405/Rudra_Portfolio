@@ -83,7 +83,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto flex justify-between items-center p-5">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xl md:text-2xl font-bold text-blue-400"
+            className="text-xl md:text-2xl font-bold text-white"
           >
             Rudra Hirdekar
           </button>
@@ -126,47 +126,51 @@ export default function App() {
           </div>
         )}
       </nav>{" "}
-      {/* Hero */}
-      <section className="text-center py-25 px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: -25 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-5xl font-bold text-blue-400"
-        >
-          {DATA.role}
-        </motion.h2>
+      {/* Cover Section */}
+      <section className="relative w-full">
+        {/* Cover Image */}
+        <div
+          className="h-64 md:h-80 w-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/cover.jpg')",
+          }}
+        />
+
+        {/* Overlay (optional dark effect) */}
+        {/* <div className="absolute inset-0 bg-black/40" /> */}
+
+        {/* Profile Image */}
+        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2">
+          <img
+            src={DATA.profileImg}
+            alt="profile"
+            className="w-40 h-40 rounded-full border-4 border-gray-950 shadow-2xl object-cover"
+          />
+        </div>
       </section>
       {/* About */}
+      <div className="mt-24" />
       <section id="about" className="max-w-5xl mx-auto text-center px-6 py-16">
         <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
           About Me
         </h3>
 
-        <div className="flex flex-col md:flex-row items-center gap-10">
-          <img
-            src={DATA.profileImg}
-            alt="profile"
-            className="w-40 h-40 rounded-full border-4 border-blue-500 object-cover"
+        <div className="text-center">
+          <TypeAnimation
+            sequence={[
+              "Frontend Developer 💻",
+              2000,
+              "React.js Developer ⚛",
+              2000,
+            ]}
+            speed={50}
+            repeat={Infinity}
+            className="text-xl md:text-2xl font-bold text-blue-400"
           />
 
-          {/* Typing Animation Text */}
-          <div className="text-center md:text-left">
-            <TypeAnimation
-              sequence={[
-                "Frontend Developer 💻",
-                2000,
-                "React.js Developer ⚛",
-                2000,
-              ]}
-              speed={50}
-              repeat={Infinity}
-              className="text-xl md:text-2xl font-bold text-blue-400"
-            />
-
-            <p className="text-gray-400 leading-relaxed mt-4">{DATA.about}</p>
-          </div>
+          <p className="text-gray-400 leading-relaxed mt-4">{DATA.about}</p>
         </div>
-      </section>{" "}
+      </section>
       {/* Skills Section */}
       <section id="skills" className="max-w-5xl mx-auto text-center px-6 py-16">
         <h3 className="text-2xl font-semibold mb-8 border-b border-gray-700 inline-block">
