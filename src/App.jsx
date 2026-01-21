@@ -58,7 +58,7 @@ dynamic data updates for a smooth user experience.`,
   // resume: "/Rudra_Hirdekar_Resume.pdf",
 };
 
-const ITEMS = 2;
+// const ITEMS = 2;
 
 export default function App() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -69,7 +69,7 @@ export default function App() {
 
   const [page, setPage] = useState(0);
   const sliderRef = useRef(null);
-  const totalPages = Math.ceil(DATA.projects.length / ITEMS);
+  const totalPages = DATA.projects.length;
   const next = () => setPage((p) => (p + 1 < totalPages ? p + 1 : 0));
   const prev = () => setPage((p) => (p - 1 >= 0 ? p - 1 : totalPages - 1));
   const translateX = `-${page * 100}%`; // Smooth slide
@@ -274,7 +274,7 @@ export default function App() {
 
           {/* VIEWPORT */}
           <div
-            className="overflow-hidden w-full"
+            className="overflow-hidden w-full touch-pan-x"
             ref={sliderRef}
             onMouseEnter={() => (isPaused.current = true)}
             onMouseLeave={() => (isPaused.current = false)}
@@ -286,6 +286,7 @@ export default function App() {
               {DATA.projects.map((p, i) => (
                 <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
                   <motion.div
+                    whileTap={{ scale: 1.05 }} // mobile tap
                     whileHover={{ scale: 1.04 }}
                     className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
                   >
