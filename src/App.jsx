@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
@@ -41,14 +42,46 @@ dynamic data updates for a smooth user experience.`,
       img: "/Image3.png", // replace
       link: "https://github.com/rudra2405/Weather-App",
     },
+    {
+      title: "Walmart App",
+      desc: `Developed a full-featured e-commerce web app using React and Tailwind CSS, implementing modern React Hooks and component-based architecture. Integrated Firebase authentication for secure login and signup functionality. Built dynamic product listing, product details, cart, checkout, and payment success pages with real-time quantity updates and automatic price calculations (tax, shipping, and grand total). Implemented admin and user roles, where admins can add products by category using a JSON Server–based dummy API. Used Axios for API integration to fetch and manage product and cart data dynamically, ensuring smooth routing and user experience across the application.`,
+      img: "/image4.png", // replace
+      link: "https://github.com/rudra2405/Walmart-app",
+    },
+    {
+      title: "Live Dictionary App",
+      desc: `Built a live dictionary application using React Hooks and state management, integrating a real-time API to fetch and display word meanings dynamically. Implemented a component-based structure with SearchBar and WordDetails components, passing data via props and rendering results efficiently using the map method.`,
+      img: "/image5.png", // replace
+      link: "https://github.com/rudra2405/Live-Dictionary-App",
+    },
   ],
   // resume: "/Rudra_Hirdekar_Resume.pdf",
 };
+
+const ITEMS = 2;
 
 export default function App() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // --------------------------------------------///
+
+  const [page, setPage] = useState(0);
+  const sliderRef = useRef(null);
+  const totalPages = Math.ceil(DATA.projects.length / ITEMS);
+  const next = () => setPage((p) => (p + 1 < totalPages ? p + 1 : 0));
+  const prev = () => setPage((p) => (p - 1 >= 0 ? p - 1 : totalPages - 1));
+  const translateX = `-${page * 100}%`; // Smooth slide
+  const isPaused = useRef(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!isPaused.current) next();
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [page]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,7 +97,7 @@ export default function App() {
         from_email: form.email,
         message: form.message,
       },
-      "pBvD4LWsAuFSQghYK"
+      "pBvD4LWsAuFSQghYK",
     );
 
     Swal.fire({
@@ -224,29 +257,64 @@ export default function App() {
       {/* Projects */}
       <section
         id="projects"
-        className="max-w-5xl text-center mx-auto px-6 py-16"
+        className="max-w-5xl mx-auto px-6 py-16 text-center"
       >
         <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 inline-block">
           Projects
         </h3>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {DATA.projects.map((p, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.04 }}
-              className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
+        <div className="relative flex items-center justify-center">
+          {/* LEFT ARROW (Desktop Only) */}
+          <button
+            onClick={prev}
+            className="hidden md:block absolute -left-10 text-3xl text-gray-400 hover:text-white"
+          >
+            ❮
+          </button>
+
+          {/* VIEWPORT */}
+          <div
+            className="overflow-hidden w-full"
+            ref={sliderRef}
+            onMouseEnter={() => (isPaused.current = true)}
+            onMouseLeave={() => (isPaused.current = false)}
+          >
+            <div
+              className="flex transition-transform duration-500"
+              style={{ transform: `translateX(${translateX})` }}
             >
-              <img src={p.img} className="w-full h-48 object-cover" />
-              <div className="p-5">
-                <h4 className="text-lg font-bold text-blue-400">{p.title}</h4>
-                <p className="text-gray-400 mb-4">{p.desc}</p>
-                <a href={p.link} className="text-blue-400 hover:underline">
-                  View Project →
-                </a>
-              </div>
-            </motion.div>
-          ))}
+              {DATA.projects.map((p, i) => (
+                <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
+                  <motion.div
+                    whileHover={{ scale: 1.04 }}
+                    className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
+                  >
+                    <img src={p.img} className="w-full h-48 object-cover" />
+                    <div className="p-5">
+                      <h4 className="text-lg font-bold text-blue-400">
+                        {p.title}
+                      </h4>
+                      <p className="text-gray-400 mb-4">{p.desc}</p>
+                      <a
+                        href={p.link}
+                        className="text-blue-400 hover:underline"
+                      >
+                        View Project →
+                      </a>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT ARROW (Desktop Only) */}
+          <button
+            onClick={next}
+            className="hidden md:block absolute -right-10 text-3xl text-gray-400 hover:text-white"
+          >
+            ❯
+          </button>
         </div>
       </section>
       {/* ------- EDUCATION SECTION ------- */}
