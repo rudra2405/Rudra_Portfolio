@@ -69,10 +69,31 @@ export default function App() {
 
   const [page, setPage] = useState(0);
   const sliderRef = useRef(null);
-  const totalPages = DATA.projects.length;
-  const next = () => setPage((p) => (p + 1 < totalPages ? p + 1 : 0));
-  const prev = () => setPage((p) => (p - 1 >= 0 ? p - 1 : totalPages - 1));
-  const translateX = `-${page * 100}%`; // Smooth slide
+
+  const [itemsPerView, setItemsPerView] = useState(
+    window.innerWidth < 768 ? 1 : 2,
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsPerView(window.innerWidth < 768 ? 1 : 2);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // const totalPages = DATA.projects.length;
+  const maxIndex = DATA.projects.length - itemsPerView;
+
+  // const next = () => setPage((p) => (p + 1 < totalPages ? p + 1 : 0));
+  // const prev = () => setPage((p) => (p - 1 >= 0 ? p - 1 : totalPages - 1));
+
+  const next = () => setPage((p) => (p >= maxIndex ? 0 : p + 1));
+
+  const prev = () => setPage((p) => (p <= 0 ? maxIndex : p - 1));
+
+  // const translateX = `-${page * (100 / itemsPerView)}%`; // Smooth slide
+
   const isPaused = useRef(false);
 
   useEffect(() => {
@@ -267,7 +288,7 @@ export default function App() {
           {/* LEFT ARROW (Desktop Only) */}
           <button
             onClick={prev}
-            className="hidden md:block absolute -left-10 text-3xl text-gray-400 hover:text-white"
+            className="absolute text-2xl -left-4 top-1/2 -translate-y-1/2 z-10"
           >
             ❮
           </button>
@@ -281,7 +302,9 @@ export default function App() {
           >
             <div
               className="flex transition-transform duration-500"
-              style={{ transform: `translateX(${translateX})` }}
+              style={{
+                transform: `translateX(-${page * (100 / itemsPerView)}%)`,
+              }}
             >
               {DATA.projects.map((p, i) => (
                 <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
@@ -312,7 +335,7 @@ export default function App() {
           {/* RIGHT ARROW (Desktop Only) */}
           <button
             onClick={next}
-            className="hidden md:block absolute -right-10 text-3xl text-gray-400 hover:text-white"
+            className="absolute text-2xl -right-4 top-1/2 -translate-y-1/2 z-10"
           >
             ❯
           </button>
