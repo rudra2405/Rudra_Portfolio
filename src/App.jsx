@@ -322,98 +322,98 @@ export default function App() {
         </section>
       </ShutterReveal>
       {/* Projects */}
-      <ShutterReveal>
-        <section
-          id="projects"
-          className="max-w-5xl mx-auto px-6 py-16 text-center"
-        >
-          <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 inline-block">
-            Projects
-          </h3>
+      {/* <ShutterReveal> */}
+      <section
+        id="projects"
+        className="max-w-5xl mx-auto px-6 py-16 text-center"
+      >
+        <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 inline-block">
+          Projects
+        </h3>
 
-          <div className="relative flex items-center justify-center">
-            {/* LEFT ARROW (Desktop Only) */}
-            <button
-              onClick={prev}
-              className="absolute text-2xl -left-4 top-1/2 -translate-y-1/2 z-10"
-            >
-              ❮
-            </button>
+        <div className="relative flex items-center justify-center">
+          {/* LEFT ARROW (Desktop Only) */}
+          <button
+            onClick={prev}
+            className="absolute text-2xl -left-4 top-1/2 -translate-y-1/2 z-10"
+          >
+            ❮
+          </button>
 
-            {/* VIEWPORT */}
+          {/* VIEWPORT */}
+          <div
+            className="overflow-hidden w-full touch-pan-x"
+            ref={sliderRef}
+            onMouseEnter={() => (isPaused.current = true)}
+            onMouseLeave={() => (isPaused.current = false)}
+          >
             <div
-              className="overflow-hidden w-full touch-pan-x"
-              ref={sliderRef}
-              onMouseEnter={() => (isPaused.current = true)}
-              onMouseLeave={() => (isPaused.current = false)}
+              className="flex transition-transform duration-500"
+              style={{
+                transform: `translateX(-${page * (100 / itemsPerView)}%)`,
+              }}
             >
-              <div
-                className="flex transition-transform duration-500"
-                style={{
-                  transform: `translateX(-${page * (100 / itemsPerView)}%)`,
-                }}
-              >
-                {DATA.projects.map((p, i) => (
-                  <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
-                    <motion.div
-                      whileTap={{ scale: 1.05 }} // mobile tap
-                      whileHover={{ scale: 1.04 }}
-                      className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
-                    >
-                      <img src={p.img} className="w-full h-48 object-cover" />
-                      <div className="p-5">
-                        <h4 className="text-lg font-bold text-blue-400">
-                          {p.title}
-                        </h4>
-                        <p className="text-gray-400 mb-4">{p.desc}</p>
-                        <div className="flex justify-center gap-4 mt-4">
-                          {/* GitHub Button */}
-                          <a
-                            href={p.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 rounded-lg
+              {DATA.projects.map((p, i) => (
+                <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
+                  <motion.div
+                    whileTap={{ scale: 1.05 }} // mobile tap
+                    whileHover={{ scale: 1.04 }}
+                    className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
+                  >
+                    <img src={p.img} className="w-full h-48 object-cover" />
+                    <div className="p-5">
+                      <h4 className="text-lg font-bold text-blue-400">
+                        {p.title}
+                      </h4>
+                      <p className="text-gray-400 mb-4">{p.desc}</p>
+                      <div className="flex justify-center gap-4 mt-4">
+                        {/* GitHub Button */}
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg
                border border-gray-700 text-gray-300
                hover:bg-gray-800 hover:text-white
                hover:scale-105 transition-all duration-300"
-                          >
-                            <FaGithub />
-                            GitHub
-                          </a>
+                        >
+                          <FaGithub />
+                          GitHub
+                        </a>
 
-                          {/* Live Preview Button */}
-                          {p.live && (
-                            <a
-                              href={p.live}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-4 py-2 rounded-lg
+                        {/* Live Preview Button */}
+                        {p.live && (
+                          <a
+                            href={p.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg
                  bg-blue-500 text-white
                  hover:bg-blue-600 hover:scale-105
                  transition-all duration-300"
-                            >
-                              <FaExternalLinkAlt />
-                              Live
-                            </a>
-                          )}
-                        </div>
+                          >
+                            <FaExternalLinkAlt />
+                            Live
+                          </a>
+                        )}
                       </div>
-                    </motion.div>
-                  </div>
-                ))}
-              </div>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
             </div>
-
-            {/* RIGHT ARROW (Desktop Only) */}
-            <button
-              onClick={next}
-              className="absolute text-2xl -right-4 top-1/2 -translate-y-1/2 z-10"
-            >
-              ❯
-            </button>
           </div>
-        </section>
-      </ShutterReveal>
+
+          {/* RIGHT ARROW (Desktop Only) */}
+          <button
+            onClick={next}
+            className="absolute text-2xl -right-4 top-1/2 -translate-y-1/2 z-10"
+          >
+            ❯
+          </button>
+        </div>
+      </section>
+      {/* </ShutterReveal> */}
       {/* ------- EDUCATION SECTION ------- */}
       <ShutterReveal>
         <section id="education" className="py-20 px-5 text-center">
