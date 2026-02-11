@@ -1,9 +1,15 @@
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 
 const DATA = {
@@ -30,7 +36,8 @@ confirmation flow. Managed state using React
 Hooks to enhance user interaction and ensure 
 smooth functionality.`,
       img: "/image2.png", // replace
-      link: "https://github.com/rudra2405/Cart_Manage_System",
+      github: "https://github.com/rudra2405/Cart_Manage_System",
+      live: "https://cart-manage-system-op3c.vercel.app/",
     },
     {
       title: "Weather App",
@@ -40,25 +47,53 @@ data from an external API. Focused on creating a
 clean, responsive UI and efficiently handling 
 dynamic data updates for a smooth user experience.`,
       img: "/Image3.png", // replace
-      link: "https://github.com/rudra2405/Weather-App",
+      github: "https://github.com/rudra2405/Weather-App",
+      live: "https://weather-app-coral-omega-39.vercel.app/",
     },
     {
       title: "Walmart App",
       desc: `Developed a full-featured e-commerce web app using React and Tailwind CSS, implementing modern React Hooks and component-based architecture. Integrated Firebase authentication for secure login and signup functionality. Built dynamic product listing, product details, cart, checkout, and payment success pages with real-time quantity updates and automatic price calculations (tax, shipping, and grand total). Implemented admin and user roles, where admins can add products by category using a JSON Server–based dummy API. Used Axios for API integration to fetch and manage product and cart data dynamically, ensuring smooth routing and user experience across the application.`,
       img: "/image4.png", // replace
-      link: "https://github.com/rudra2405/Walmart-app",
+      github: "https://github.com/rudra2405/Walmart-app",
+      live: "https://walmart-app-sigma.vercel.app",
     },
     {
       title: "Live Dictionary App",
       desc: `Built a live dictionary application using React Hooks and state management, integrating a real-time API to fetch and display word meanings dynamically. Implemented a component-based structure with SearchBar and WordDetails components, passing data via props and rendering results efficiently using the map method.`,
       img: "/image5.png", // replace
-      link: "https://github.com/rudra2405/Live-Dictionary-App",
+      github: "https://github.com/rudra2405/Live-Dictionary-App",
+      live: "https://live-dictionary-app.vercel.app/",
     },
   ],
   // resume: "/Rudra_Hirdekar_Resume.pdf",
 };
 
 // const ITEMS = 2;
+
+const ShutterReveal = ({ children, speed = 0.5 }) => {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const scaleY = useTransform(scrollYProgress, [0, speed], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, speed * 0.6], [0, 1]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        scaleY,
+        opacity,
+        transformOrigin: "top", // 👈 THIS is the shutter-down key
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export default function App() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -220,164 +255,208 @@ export default function App() {
         </div>
       </section>
       {/* About */}
-      <div className="mt-1 sm:mt-15" />
-      <section id="about" className="max-w-5xl mx-auto text-center px-6 py-16">
-        <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
-          About Me
-        </h3>
+      <ShutterReveal>
+        <div className="mt-1 sm:mt-15" />
+        <section
+          id="about"
+          className="max-w-5xl mx-auto text-center px-6 py-16"
+        >
+          <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
+            About Me
+          </h3>
 
-        <div className="text-center">
-          <TypeAnimation
-            sequence={[
-              "Frontend Developer 💻",
-              2000,
-              "React.js Developer ⚛",
-              2000,
-            ]}
-            speed={50}
-            repeat={Infinity}
-            className="text-xl md:text-2xl font-bold text-blue-400"
-          />
+          <div className="text-center">
+            <TypeAnimation
+              sequence={[
+                "Frontend Developer 💻",
+                2000,
+                "React.js Developer ⚛",
+                2000,
+              ]}
+              speed={50}
+              repeat={Infinity}
+              className="text-xl md:text-2xl font-bold text-blue-400"
+            />
 
-          <p className="text-gray-400 leading-relaxed mt-4">{DATA.about}</p>
-        </div>
-      </section>
+            <p className="text-gray-400 leading-relaxed mt-4">{DATA.about}</p>
+          </div>
+        </section>
+      </ShutterReveal>
       {/* Skills Section */}
-      <section id="skills" className="max-w-5xl mx-auto text-center px-6 py-16">
-        <h3 className="text-2xl font-semibold mb-8 border-b border-gray-700 inline-block">
-          Skills 🚀
-        </h3>
+      <ShutterReveal>
+        {/* your section content */}
+        <section
+          id="skills"
+          className="max-w-5xl mx-auto text-center px-6 py-16"
+        >
+          <h3 className="text-2xl font-semibold mb-8 border-b border-gray-700 inline-block">
+            Skills 🚀
+          </h3>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
-          {[
-            "React.js",
-            "JavaScript",
-            "HTML5",
-            "CSS3",
-            "Tailwind CSS",
-            "Git & GitHub",
-            "Bootstrap",
-            "Axios",
-            "Firebase",
-            "SCSS",
-            "AJAX",
-            "Responsive Design",
-          ].map((skill, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.15 }}
-              className="cursor-pointer text-xl font-bold py-4 rounded-lg border border-gray-800 bg-gray-900 transition"
-            >
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {skill}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
+            {[
+              "React.js",
+              "JavaScript",
+              "HTML5",
+              "CSS3",
+              "Tailwind CSS",
+              "Git & GitHub",
+              "Bootstrap",
+              "Axios",
+              "Firebase",
+              "SCSS",
+              "AJAX",
+              "Responsive Design",
+            ].map((skill, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.15 }}
+                className="cursor-pointer text-xl font-bold py-4 rounded-lg border border-gray-800 bg-gray-900 transition"
+              >
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  {skill}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </ShutterReveal>
       {/* Projects */}
-      <section
-        id="projects"
-        className="max-w-5xl mx-auto px-6 py-16 text-center"
-      >
-        <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 inline-block">
-          Projects
-        </h3>
+      <ShutterReveal>
+        <section
+          id="projects"
+          className="max-w-5xl mx-auto px-6 py-16 text-center"
+        >
+          <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 inline-block">
+            Projects
+          </h3>
 
-        <div className="relative flex items-center justify-center">
-          {/* LEFT ARROW (Desktop Only) */}
-          <button
-            onClick={prev}
-            className="absolute text-2xl -left-4 top-1/2 -translate-y-1/2 z-10"
-          >
-            ❮
-          </button>
-
-          {/* VIEWPORT */}
-          <div
-            className="overflow-hidden w-full touch-pan-x"
-            ref={sliderRef}
-            onMouseEnter={() => (isPaused.current = true)}
-            onMouseLeave={() => (isPaused.current = false)}
-          >
-            <div
-              className="flex transition-transform duration-500"
-              style={{
-                transform: `translateX(-${page * (100 / itemsPerView)}%)`,
-              }}
+          <div className="relative flex items-center justify-center">
+            {/* LEFT ARROW (Desktop Only) */}
+            <button
+              onClick={prev}
+              className="absolute text-2xl -left-4 top-1/2 -translate-y-1/2 z-10"
             >
-              {DATA.projects.map((p, i) => (
-                <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
-                  <motion.div
-                    whileTap={{ scale: 1.05 }} // mobile tap
-                    whileHover={{ scale: 1.04 }}
-                    className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
-                  >
-                    <img src={p.img} className="w-full h-48 object-cover" />
-                    <div className="p-5">
-                      <h4 className="text-lg font-bold text-blue-400">
-                        {p.title}
-                      </h4>
-                      <p className="text-gray-400 mb-4">{p.desc}</p>
-                      <a
-                        href={p.link}
-                        className="text-blue-400 hover:underline"
-                      >
-                        View Project →
-                      </a>
-                    </div>
-                  </motion.div>
-                </div>
-              ))}
+              ❮
+            </button>
+
+            {/* VIEWPORT */}
+            <div
+              className="overflow-hidden w-full touch-pan-x"
+              ref={sliderRef}
+              onMouseEnter={() => (isPaused.current = true)}
+              onMouseLeave={() => (isPaused.current = false)}
+            >
+              <div
+                className="flex transition-transform duration-500"
+                style={{
+                  transform: `translateX(-${page * (100 / itemsPerView)}%)`,
+                }}
+              >
+                {DATA.projects.map((p, i) => (
+                  <div key={i} className="w-full md:w-1/2 px-3 shrink-0">
+                    <motion.div
+                      whileTap={{ scale: 1.05 }} // mobile tap
+                      whileHover={{ scale: 1.04 }}
+                      className="bg-gray-900 rounded-xl shadow-lg border border-gray-800 overflow-hidden"
+                    >
+                      <img src={p.img} className="w-full h-48 object-cover" />
+                      <div className="p-5">
+                        <h4 className="text-lg font-bold text-blue-400">
+                          {p.title}
+                        </h4>
+                        <p className="text-gray-400 mb-4">{p.desc}</p>
+                        <div className="flex justify-center gap-4 mt-4">
+                          {/* GitHub Button */}
+                          <a
+                            href={p.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg
+               border border-gray-700 text-gray-300
+               hover:bg-gray-800 hover:text-white
+               hover:scale-105 transition-all duration-300"
+                          >
+                            <FaGithub />
+                            GitHub
+                          </a>
+
+                          {/* Live Preview Button */}
+                          {p.live && (
+                            <a
+                              href={p.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2 rounded-lg
+                 bg-blue-500 text-white
+                 hover:bg-blue-600 hover:scale-105
+                 transition-all duration-300"
+                            >
+                              <FaExternalLinkAlt />
+                              Live
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT ARROW (Desktop Only) */}
+            <button
+              onClick={next}
+              className="absolute text-2xl -right-4 top-1/2 -translate-y-1/2 z-10"
+            >
+              ❯
+            </button>
+          </div>
+        </section>
+      </ShutterReveal>
+      {/* ------- EDUCATION SECTION ------- */}
+      <ShutterReveal>
+        <section id="education" className="py-20 px-5 text-center">
+          <h2 className="text-2xl font-semibold mb-4">Education 🎓</h2>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+              <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
+                Bachelor of Engineering (Computer Science)
+              </h3>
+              <p className="text-gray-600 mt-2 font-semibold">
+                Darshan University
+              </p>
+              <p className="mt-2 font-medium">2019 - 2023</p>
+            </div>
+
+            <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+              <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
+                Higher Secondary (HSC)
+              </h3>
+              <p className="text-gray-600 mt-2 font-semibold">
+                Shantvan School
+              </p>
+              <p className="mt-2 font-medium">2017 - 2019</p>
             </div>
           </div>
-
-          {/* RIGHT ARROW (Desktop Only) */}
-          <button
-            onClick={next}
-            className="absolute text-2xl -right-4 top-1/2 -translate-y-1/2 z-10"
-          >
-            ❯
-          </button>
-        </div>
-      </section>
-      {/* ------- EDUCATION SECTION ------- */}
-      <section id="education" className="py-20 px-5 text-center">
-        <h2 className="text-2xl font-semibold mb-4">Education 🎓</h2>
-
-        <div className="max-w-3xl mx-auto space-y-6">
-          <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
-            <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
-              Bachelor of Engineering (Computer Science)
-            </h3>
-            <p className="text-gray-600 mt-2 font-semibold">
-              Darshan University
-            </p>
-            <p className="mt-2 font-medium">2019 - 2023</p>
-          </div>
-
-          <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
-            <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
-              Higher Secondary (HSC)
-            </h3>
-            <p className="text-gray-600 mt-2 font-semibold">Shantvan School</p>
-            <p className="mt-2 font-medium">2017 - 2019</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </ShutterReveal>
       {/* Resume */}
-      <section id="resume" className="text-center py-16">
-        <h3 className="text-2xl font-semibold mb-4">Resume</h3>
+      <ShutterReveal>
+        <section id="resume" className="text-center py-16">
+          <h3 className="text-2xl font-semibold mb-4">Resume</h3>
 
-        <a
-          href="/Rudra_Hirdekar_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
-        >
-          📄 View / Download Resume  
-        </a>
-      </section>
+          <a
+            href="/Rudra_Hirdekar_Resume.pdf"
+            download
+            rel="noopener noreferrer"
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+          >
+            📄 View / Download Resume  
+          </a>
+        </section>
+      </ShutterReveal>
       {/* Contact */}
       <section id="contact" className="max-w-4xl mx-auto px-6 py-16">
         <h3 className="text-2xl font-semibold mb-6 text-center">Contact Me</h3>
