@@ -37,7 +37,7 @@ Hooks to enhance user interaction and ensure
 smooth functionality.`,
       img: "/image2.png", // replace
       github: "https://github.com/rudra2405/Cart_Manage_System",
-      live: "https://cart-manage-system-op3c.vercel.app/",
+      live: "https://cart-manage-system.vercel.app/",
     },
     {
       title: "Weather App",
