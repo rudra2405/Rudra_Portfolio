@@ -255,72 +255,66 @@ export default function App() {
         </div>
       </section>
       {/* About */}
-      <ShutterReveal>
-        <div className="mt-1 sm:mt-15" />
-        <section
-          id="about"
-          className="max-w-5xl mx-auto text-center px-6 py-16"
-        >
-          <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
-            About Me
-          </h3>
+      {/* <ShutterReveal> */}
+      <div className="mt-1 sm:mt-15" />
+      <section id="about" className="max-w-5xl mx-auto text-center px-6 py-16">
+        <h3 className="text-2xl font-semibold border-b border-gray-700 inline-block mb-6">
+          About Me
+        </h3>
 
-          <div className="text-center">
-            <TypeAnimation
-              sequence={[
-                "Frontend Developer 💻",
-                2000,
-                "React.js Developer ⚛",
-                2000,
-              ]}
-              speed={50}
-              repeat={Infinity}
-              className="text-xl md:text-2xl font-bold text-blue-400"
-            />
+        <div className="text-center">
+          <TypeAnimation
+            sequence={[
+              "Frontend Developer 💻",
+              2000,
+              "React.js Developer ⚛",
+              2000,
+            ]}
+            speed={50}
+            repeat={Infinity}
+            className="text-xl md:text-2xl font-bold text-blue-400"
+          />
 
-            <p className="text-gray-400 leading-relaxed mt-4">{DATA.about}</p>
-          </div>
-        </section>
-      </ShutterReveal>
+          <p className="text-gray-400 leading-relaxed mt-4">{DATA.about}</p>
+        </div>
+      </section>
+      {/* </ShutterReveal> */}
       {/* Skills Section */}
-      <ShutterReveal>
-        {/* your section content */}
-        <section
-          id="skills"
-          className="max-w-5xl mx-auto text-center px-6 py-16"
-        >
-          <h3 className="text-2xl font-semibold mb-8 border-b border-gray-700 inline-block">
-            Skills 🚀
-          </h3>
+      {/* <ShutterReveal> */}
+      {/* your section content */}
+      <section id="skills" className="max-w-5xl mx-auto text-center px-6 py-16">
+        <h3 className="text-2xl font-semibold mb-8 border-b border-gray-700 inline-block">
+          Skills 🚀
+        </h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
-            {[
-              "React.js",
-              "JavaScript",
-              "HTML5",
-              "CSS3",
-              "Tailwind CSS",
-              "Git & GitHub",
-              "Bootstrap",
-              "Axios",
-              "Firebase",
-              "SCSS",
-              "AJAX",
-              "Responsive Design",
-            ].map((skill, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.15 }}
-                className="cursor-pointer text-xl font-bold py-4 rounded-lg border border-gray-800 bg-gray-900 transition"
-              >
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  {skill}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      </ShutterReveal>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
+          {[
+            "React.js",
+            "JavaScript",
+            "HTML5",
+            "CSS3",
+            "Tailwind CSS",
+            "Git & GitHub",
+            "Bootstrap",
+            "Axios",
+            "Firebase",
+            "SCSS",
+            "AJAX",
+            "Responsive Design",
+          ].map((skill, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.15 }}
+              className="cursor-pointer text-xl font-bold py-4 rounded-lg border border-gray-800 bg-gray-900 transition"
+            >
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                {skill}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+      {/* </ShutterReveal> */}
       {/* Projects */}
       {/* <ShutterReveal> */}
       <section
@@ -415,48 +409,46 @@ export default function App() {
       </section>
       {/* </ShutterReveal> */}
       {/* ------- EDUCATION SECTION ------- */}
-      <ShutterReveal>
-        <section id="education" className="py-20 px-5 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Education 🎓</h2>
+      {/* <ShutterReveal> */}
+      <section id="education" className="py-20 px-5 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Education 🎓</h2>
 
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
-              <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
-                Bachelor of Engineering (Computer Science)
-              </h3>
-              <p className="text-gray-600 mt-2 font-semibold">
-                Darshan University
-              </p>
-              <p className="mt-2 font-medium">2019 - 2023</p>
-            </div>
-
-            <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
-              <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
-                Higher Secondary (HSC)
-              </h3>
-              <p className="text-gray-600 mt-2 font-semibold">
-                Shantvan School
-              </p>
-              <p className="mt-2 font-medium">2017 - 2019</p>
-            </div>
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+            <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
+              Bachelor of Engineering (Computer Science)
+            </h3>
+            <p className="text-gray-600 mt-2 font-semibold">
+              Darshan University
+            </p>
+            <p className="mt-2 font-medium">2019 - 2023</p>
           </div>
-        </section>
-      </ShutterReveal>
-      {/* Resume */}
-      <ShutterReveal>
-        <section id="resume" className="text-center py-16">
-          <h3 className="text-2xl font-semibold mb-4">Resume</h3>
 
-          <a
-            href="/Rudra_Hirdekar_Resume.pdf"
-            download
-            rel="noopener noreferrer"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
-          >
-            📄 View / Download Resume  
-          </a>
-        </section>
-      </ShutterReveal>
+          <div className="border border-gray-300 rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+            <h3 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-2xl font-semibold">
+              Higher Secondary (HSC)
+            </h3>
+            <p className="text-gray-600 mt-2 font-semibold">Shantvan School</p>
+            <p className="mt-2 font-medium">2017 - 2019</p>
+          </div>
+        </div>
+      </section>
+      {/* </ShutterReveal> */}
+      {/* Resume */}
+      {/* <ShutterReveal> */}
+      <section id="resume" className="text-center py-16">
+        <h3 className="text-2xl font-semibold mb-4">Resume</h3>
+
+        <a
+          href="/Rudra_Hirdekar_Resume.pdf"
+          download
+          rel="noopener noreferrer"
+          className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+        >
+          📄 View / Download Resume  
+        </a>
+      </section>
+      {/* </ShutterReveal> */}
       {/* Contact */}
       <section id="contact" className="max-w-4xl mx-auto px-6 py-16">
         <h3 className="text-2xl font-semibold mb-6 text-center">Contact Me</h3>
