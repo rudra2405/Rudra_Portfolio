@@ -64,6 +64,13 @@ dynamic data updates for a smooth user experience.`,
       github: "https://github.com/rudra2405/Live-Dictionary-App",
       live: "https://live-dictionary-app.vercel.app/",
     },
+    {
+      title: "Student Management System",
+      desc: "Built a fully functional Student Management System using React.js with complete CRUD operations for Students, Courses, and Attendance management, leveraging LocalStorage for data persistence. Implemented a responsive UI with Tailwind CSS, ensuring smooth navigation and user-friendly interactions. The application allows users to add, edit, delete, and view student records, manage course enrollments, and track attendance efficiently.",
+      img: "/image6.png", // replace
+      github: "https://github.com/rudra2405/Student_Management_System",
+      live: "https://student-management-system-eight-gray.vercel.app/",
+    },
   ],
   // resume: "/Rudra_Hirdekar_Resume.pdf",
 };
