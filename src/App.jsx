@@ -136,15 +136,15 @@ export default function App() {
 
   // const translateX = `-${page * (100 / itemsPerView)}%`; // Smooth slide
 
-  const isPaused = useRef(false);
+  // const isPaused = useRef(false);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (!isPaused.current) next();
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     if (!isPaused.current) next();
+  //   }, 3000);
 
-    return () => clearInterval(timer);
-  }, [page]);
+  //   return () => clearInterval(timer);
+  // }, [page]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -342,12 +342,7 @@ export default function App() {
           </button>
 
           {/* VIEWPORT */}
-          <div
-            className="overflow-hidden w-full touch-pan-x"
-            ref={sliderRef}
-            onMouseEnter={() => (isPaused.current = true)}
-            onMouseLeave={() => (isPaused.current = false)}
-          >
+          <div className="overflow-hidden w-full touch-pan-x" ref={sliderRef}>
             <div
               className="flex transition-transform duration-500"
               style={{
