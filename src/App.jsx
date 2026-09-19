@@ -110,7 +110,7 @@ export default function App() {
   // --------------------------------------------///
 
   const [page, setPage] = useState(0);
-  const sliderRef = useRef(null);
+  // const sliderRef = useRef(null);
 
   const [itemsPerView, setItemsPerView] = useState(
     window.innerWidth < 768 ? 1 : 2,
@@ -342,7 +342,7 @@ export default function App() {
           </button>
 
           {/* VIEWPORT */}
-          <div className="overflow-hidden w-full touch-pan-x" ref={sliderRef}>
+          <div className="overflow-hidden w-full">
             <div
               className="flex transition-transform duration-500"
               style={{
