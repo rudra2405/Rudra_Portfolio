@@ -124,6 +124,17 @@ export default function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   // const totalPages = DATA.projects.length;
   const maxIndex = DATA.projects.length - itemsPerView;
 
